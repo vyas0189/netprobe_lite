@@ -47,6 +47,8 @@ services:
       - ./config/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
     networks:
       - custom_network # Attach to the custom network
+    expose:
+      - "9090"
     # grafana:
     #   restart: always
     #   image: grafana/grafana-enterprise
