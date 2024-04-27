@@ -48,7 +48,7 @@ services:
     networks:
       - custom_network # Attach to the custom network
     expose:
-      - "9090"
+      - "9090:9090"
     # grafana:
     #   restart: always
     #   image: grafana/grafana-enterprise
