@@ -46,16 +46,18 @@ services:
     volumes:
       - ./config/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
-      - "9090:9090"  # Expose port 9090 for Prometheus
+      - "9090:9090" # Expose port 9090 for Prometheus
     networks:
       - custom_network
-    # grafana:
-    #   restart: always
-    #   image: grafana/grafana-enterprise
-    #   container_name: netprobe-grafana
-    #   volumes:
-    #     - ./config/grafana/datasources/automatic.yml:/etc/grafana/provisioning/datasources/automatic.yml
-    #     - ./config/grafana/dashboards/main.yml:/etc/grafana/provisioning/dashboards/main.yml
-    #     - ./config/grafana/dashboards/netprobe.json:/var/lib/grafana/dashboards/netprobe.json
-    #   ports:
-    #     - '3001:3000'
+  grafana:
+    restart: always
+    image: grafana/grafana-enterprise
+    container_name: netprobe-grafana
+    volumes:
+      - ./config/grafana/datasources/automatic.yml:/etc/grafana/provisioning/datasources/automatic.yml
+      - ./config/grafana/dashboards/main.yml:/etc/grafana/provisioning/dashboards/main.yml
+      - ./config/grafana/dashboards/netprobe.json:/var/lib/grafana/dashboards/netprobe.json
+    ports:
+      - '3001:3000'
+    networks:
+      - custom_network
